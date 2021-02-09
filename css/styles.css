@@ -38,4 +38,5 @@ button {
   font-weight: 700;
   padding: 0.25rem 1rem;
   border: 0.2rem solid #123754;
+  cursor: pointer;
 }
