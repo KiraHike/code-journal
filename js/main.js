@@ -9,3 +9,24 @@ function addImage(event) {
 }
 
 $imageInput.addEventListener('blur', addImage);
+
+var $newEntryForm = document.querySelector('#entry-form');
+
+function clickSave(event) {
+  event.preventDefault();
+  var titleValue = $newEntryForm.elements.title.value;
+  var notesValue = $newEntryForm.elements.notes.value;
+  var imageValue = $newEntryForm.elements.url.value;
+  var entryObj = {
+    URL: imageValue,
+    title: titleValue,
+    notes: notesValue,
+    entryId: data.nextEntryId
+  };
+  data.nextEntryId++;
+  data.entries.push(entryObj);
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $newEntryForm.reset();
+}
+
+$newEntryForm.addEventListener('submit', clickSave);
