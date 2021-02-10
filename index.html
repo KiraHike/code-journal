@@ -18,13 +18,20 @@
   <header>
     <nav>
       <ul class="nav-bar container">
-        <li><h1>Code Journal</h1></li>
-        <li>Entries</li>
+        <li>
+          <h1>Code Journal</h1>
+        </li>
+        <li>
+          <i data-view="entries" class="entries-link fas fa-list fa-2x"></i>
+        </li>
+        <li>
+          <i data-view="entry-form" class="entry-form-link fas fa-plus fa-2x"></i>
+        </li>
       </ul>
     </nav>
   </header>
   <main>
-    <div data-view="entry-form">
+    <div data-view="entry-form" class="view">
       <form class="container" id="entry-form">
         <div class="row">
           <div class="column-full">
@@ -66,7 +73,7 @@
         </div>
       </form>
     </div>
-    <div data-view="entries">
+    <div data-view="entries" class="view hidden">
       <ul class="entry-list container"></ul>
     </div>
   </main>

@@ -70,3 +70,19 @@ function contentLoaded(event) {
 }
 
 window.addEventListener('DOMContentLoaded', contentLoaded);
+
+var $navBar = document.querySelector('.nav-bar');
+var $viewList = document.querySelectorAll('.view');
+
+function changeView(event) {
+  var dataViewValue = event.target.getAttribute('data-view');
+  for (var i = 0; i < $viewList.length; i++) {
+    if ($viewList[i].getAttribute('data-view') === dataViewValue) {
+      $viewList[i].className = 'view';
+    } else {
+      $viewList[i].className = 'view hidden';
+    }
+  }
+}
+
+$navBar.addEventListener('click', changeView);

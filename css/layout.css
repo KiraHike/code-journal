@@ -13,10 +13,6 @@
   flex-wrap: wrap;
 }
 
-li.row {
-  margin: 2rem 0;
-}
-
 span.column-half {
   align-self: center;
 }
