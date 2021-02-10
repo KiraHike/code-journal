@@ -27,8 +27,6 @@ function clickSave(event) {
   data.entries.unshift(entryObj);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntryForm.reset();
-  var dataJSON = JSON.stringify(data);
-  localStorage.setItem('js-local-storage', dataJSON);
 }
 
 $newEntryForm.addEventListener('submit', clickSave);
