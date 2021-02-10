@@ -62,7 +62,11 @@ function renderEntry(object) {
 
 var $entryList = document.querySelector('.entry-list');
 
-for (var i = 0; i < data.entries.length; i++) {
-  var $entry = renderEntry(data.entries[i]);
-  $entryList.append($entry);
+function contentLoaded(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var $entry = renderEntry(data.entries[i]);
+    $entryList.append($entry);
+  }
 }
+
+window.addEventListener('DOMContentLoaded', contentLoaded);
