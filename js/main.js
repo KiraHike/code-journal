@@ -24,7 +24,7 @@ function clickSave(event) {
     entryId: data.nextEntryId
   };
   data.nextEntryId++;
-  data.entries.push(entryObj);
+  data.entries.unshift(entryObj);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntryForm.reset();
   var dataJSON = JSON.stringify(data);
