@@ -11,6 +11,8 @@ function addImage(event) {
 $imageInput.addEventListener('blur', addImage);
 
 var $newEntryForm = document.querySelector('#entry-form');
+var $dataViewEntryForm = document.querySelector('#formView');
+var $dataViewEntries = document.querySelector('#entriesView');
 
 function clickSave(event) {
   event.preventDefault();
@@ -27,6 +29,8 @@ function clickSave(event) {
   data.entries.unshift(entryObj);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntryForm.reset();
+  $dataViewEntries.className = 'view';
+  $dataViewEntryForm.className = 'view hidden';
 }
 
 $newEntryForm.addEventListener('submit', clickSave);
