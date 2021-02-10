@@ -30,3 +30,39 @@ function clickSave(event) {
 }
 
 $newEntryForm.addEventListener('submit', clickSave);
+
+function renderEntry(object) {
+  var $liRow = document.createElement('li');
+  $liRow.setAttribute('class', 'entry-item row');
+
+  var $liImageCol = document.createElement('span');
+  $liImageCol.setAttribute('class', 'column-full column-half');
+  $liRow.append($liImageCol);
+
+  var $liImage = document.createElement('img');
+  $liImage.setAttribute('src', object.url);
+  $liImageCol.append($liImage);
+
+  var $liTextCol = document.createElement('span');
+  $liTextCol.setAttribute('class', 'column-full column-half');
+  $liRow.append($liTextCol);
+
+  var $liHead = document.createElement('h3');
+  var $liHeadText = document.createTextNode(object.title);
+  $liHead.append($liHeadText);
+  $liTextCol.append($liHead);
+
+  var $liPara = document.createElement('p');
+  var $liParaText = document.createTextNode(object.notes);
+  $liPara.append($liParaText);
+  $liTextCol.append($liPara);
+
+  return $liRow;
+}
+
+var $entryList = document.querySelector('.entry-list');
+
+for (var i = 0; i < data.entries.length; i++) {
+  var $entry = renderEntry(data.entries[i]);
+  $entryList.append($entry);
+}

@@ -30,7 +30,7 @@
             <h2>New Entry</h2>
           </div>
           <div class="column-full column-half">
-            <input type="image" class="image" src="images/placeholder-image-square.jpg" alt="Entry Image">
+            <input type="image" class="image" id="image" src="images/placeholder-image-square.jpg" alt="Entry Image">
           </div>
           <div class="column-full column-half">
             <label for="image-url">Image URL</label>
@@ -68,7 +68,9 @@
     <div data-view="entries">
       <ul class="entry-list container">
         <li class="entry-item row">
-          <img class="image column-full column-half" src="https://cdn1.matadornetwork.com/blogs/1/2019/10/seljalandsfoss-most-instagrammed-waterfalls-world-1200x855.jpg" alt="Entry Image">
+          <span class="img column-full column-half">
+            <img class="image" src="https://cdn1.matadornetwork.com/blogs/1/2019/10/seljalandsfoss-most-instagrammed-waterfalls-world-1200x855.jpg" alt="Entry Image">
+          </span>
           <span class="text column-full column-half">
             <h3>CSS Cascade</h3>
             <p>
