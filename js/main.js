@@ -18,7 +18,7 @@ function clickSave(event) {
   var notesValue = $newEntryForm.elements.notes.value;
   var imageValue = $newEntryForm.elements.url.value;
   var entryObj = {
-    URL: imageValue,
+    url: imageValue,
     title: titleValue,
     notes: notesValue,
     entryId: data.nextEntryId
