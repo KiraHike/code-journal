@@ -1,6 +1,17 @@
 /* global data */
 /* exported data */
 
+var $dataViewEntryForm = document.querySelector('#formView');
+var $dataViewEntries = document.querySelector('#entriesView');
+
+if (data.view === 'entry-form') {
+  $dataViewEntries.className = 'view hidden';
+  $dataViewEntryForm.className = 'view';
+} else {
+  $dataViewEntries.className = 'view';
+  $dataViewEntryForm.className = 'view hidden';
+}
+
 var $imageInput = document.querySelector('#image-url');
 var $image = document.querySelector('#image');
 
@@ -11,8 +22,6 @@ function addImage(event) {
 $imageInput.addEventListener('blur', addImage);
 
 var $newEntryForm = document.querySelector('#entry-form');
-var $dataViewEntryForm = document.querySelector('#formView');
-var $dataViewEntries = document.querySelector('#entriesView');
 
 function clickSave(event) {
   event.preventDefault();
@@ -29,8 +38,7 @@ function clickSave(event) {
   data.entries.unshift(entryObj);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntryForm.reset();
-  $dataViewEntries.className = 'view';
-  $dataViewEntryForm.className = 'view hidden';
+  data.view = 'entries';
   location.reload();
 }
 
@@ -82,6 +90,7 @@ var $viewList = document.querySelectorAll('.view');
 function changeView(event) {
   if (event.target.matches('.nav-link')) {
     var dataViewValue = event.target.getAttribute('data-view');
+    data.view = dataViewValue;
     for (var i = 0; i < $viewList.length; i++) {
       if ($viewList[i].getAttribute('data-view') === dataViewValue) {
         $viewList[i].className = 'view';
