@@ -37,17 +37,18 @@ function changeViewForm() {
   $dataViewEntryForm.className = 'view';
 }
 
+var titleValue = $newEntryForm.elements.title.value;
+var notesValue = $newEntryForm.elements.notes.value;
+var imageValue = $newEntryForm.elements.url.value;
+var entryObj = {
+  url: imageValue,
+  title: titleValue,
+  notes: notesValue,
+  entryId: data.nextEntryId
+};
+
 function clickSave(event) {
   event.preventDefault();
-  var titleValue = $newEntryForm.elements.title.value;
-  var notesValue = $newEntryForm.elements.notes.value;
-  var imageValue = $newEntryForm.elements.url.value;
-  var entryObj = {
-    url: imageValue,
-    title: titleValue,
-    notes: notesValue,
-    entryId: data.nextEntryId
-  };
   data.nextEntryId++;
   data.entries.unshift(entryObj);
   $entry = renderEntry(entryObj);
@@ -93,8 +94,10 @@ function renderEntry(object) {
   return $liRow;
 }
 
+var i;
+
 function contentLoaded(event) {
-  for (var i = 0; i < data.entries.length; i++) {
+  for (i = 0; i < data.entries.length; i++) {
     $entry = renderEntry(data.entries[i]);
     $entryList.append($entry);
   }
@@ -109,7 +112,7 @@ function changeViewNav(event) {
   if (event.target.matches('.nav-link')) {
     var dataViewValue = event.target.getAttribute('data-view');
     data.view = dataViewValue;
-    for (var i = 0; i < $viewList.length; i++) {
+    for (i = 0; i < $viewList.length; i++) {
       if ($viewList[i].getAttribute('data-view') === dataViewValue) {
         $viewList[i].className = 'view';
       } else {
@@ -123,8 +126,18 @@ $navBar.addEventListener('click', changeViewNav);
 
 $entryList.addEventListener('click', editEntry);
 
+var closestElement;
+var dataEntryIDValue;
+
 function editEntry(event) {
   if (event.target.matches('i')) {
+    closestElement = event.target.closest('li');
+    dataEntryIDValue = Number(closestElement.getAttribute('data-entry-id'));
+    for (i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === dataEntryIDValue) {
+        data.editing = data.entries[i];
+      }
+    }
     changeViewForm();
   }
 }
