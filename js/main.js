@@ -69,6 +69,10 @@ function renderEntry(object) {
   $liTextCol.setAttribute('class', 'column-full column-half');
   $liRow.append($liTextCol);
 
+  var $liEditIcon = document.createElement('i');
+  $liEditIcon.setAttribute('class', 'blue fas fa-pen');
+  $liTextCol.append($liEditIcon);
+
   var $liHead = document.createElement('h3');
   var $liHeadText = document.createTextNode(object.title);
   $liHead.append($liHeadText);
