@@ -114,3 +114,8 @@ function changeViewNav(event) {
 }
 
 $navBar.addEventListener('click', changeViewNav);
+
+$entryList.addEventListener('click', editEntry);
+
+function editEntry(event) {
+}
