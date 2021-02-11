@@ -31,6 +31,7 @@ function clickSave(event) {
   $newEntryForm.reset();
   $dataViewEntries.className = 'view';
   $dataViewEntryForm.className = 'view hidden';
+  location.reload();
 }
 
 $newEntryForm.addEventListener('submit', clickSave);
@@ -79,12 +80,14 @@ var $navBar = document.querySelector('.nav-bar');
 var $viewList = document.querySelectorAll('.view');
 
 function changeView(event) {
-  var dataViewValue = event.target.getAttribute('data-view');
-  for (var i = 0; i < $viewList.length; i++) {
-    if ($viewList[i].getAttribute('data-view') === dataViewValue) {
-      $viewList[i].className = 'view';
-    } else {
-      $viewList[i].className = 'view hidden';
+  if (event.target.matches('.nav-link')) {
+    var dataViewValue = event.target.getAttribute('data-view');
+    for (var i = 0; i < $viewList.length; i++) {
+      if ($viewList[i].getAttribute('data-view') === dataViewValue) {
+        $viewList[i].className = 'view';
+      } else {
+        $viewList[i].className = 'view hidden';
+      }
     }
   }
 }
