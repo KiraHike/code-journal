@@ -25,10 +25,16 @@ var $newEntryForm = document.querySelector('#entry-form');
 var $entryList = document.querySelector('.entry-list');
 var $entry;
 
-function changeViewDOM() {
+function changeViewEntries() {
   data.view = 'entries';
   $dataViewEntries.className = 'view';
   $dataViewEntryForm.className = 'view hidden';
+}
+
+function changeViewForm() {
+  data.view = 'entry-form';
+  $dataViewEntries.className = 'view hidden';
+  $dataViewEntryForm.className = 'view';
 }
 
 function clickSave(event) {
@@ -48,7 +54,7 @@ function clickSave(event) {
   $entryList.prepend($entry);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntryForm.reset();
-  changeViewDOM();
+  changeViewEntries();
 }
 
 $newEntryForm.addEventListener('submit', clickSave);
@@ -118,4 +124,7 @@ $navBar.addEventListener('click', changeViewNav);
 $entryList.addEventListener('click', editEntry);
 
 function editEntry(event) {
+  if (event.target.matches('i')) {
+    changeViewForm();
+  }
 }
