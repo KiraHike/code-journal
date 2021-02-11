@@ -129,6 +129,8 @@ $entryList.addEventListener('click', editEntry);
 var closestElement;
 var dataEntryIDValue;
 
+var $formHead = document.querySelector('h2');
+
 function editEntry(event) {
   if (event.target.matches('i')) {
     closestElement = event.target.closest('li');
@@ -139,5 +141,10 @@ function editEntry(event) {
       }
     }
     changeViewForm();
+    $newEntryForm.elements.title.value = data.editing.title;
+    $newEntryForm.elements.notes.value = data.editing.notes;
+    $newEntryForm.elements.url.value = data.editing.url;
+    $formHead.textContent = 'Edit Entry';
+    addImage();
   }
 }
