@@ -55,7 +55,8 @@ $newEntryForm.addEventListener('submit', clickSave);
 
 function renderEntry(object) {
   var $liRow = document.createElement('li');
-  $liRow.setAttribute('class', 'entry-item row');
+  $liRow.className = 'entry-item row';
+  $liRow.setAttribute('data-entry-id', object.entryId);
 
   var $liImageCol = document.createElement('span');
   $liImageCol.setAttribute('class', 'column-full column-half');
