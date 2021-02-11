@@ -17,20 +17,28 @@
 <body>
   <header>
     <nav>
-      <div class="container">
-        <h1>Code Journal</h1>
-      </div>
+      <ul class="nav-bar container">
+        <li>
+          <h1>Code Journal</h1>
+        </li>
+        <li>
+          <i data-view="entries" class="nav-link white fas fa-list fa-2x"></i>
+        </li>
+        <li>
+          <i data-view="entry-form" class="nav-link white fas fa-plus fa-2x"></i>
+        </li>
+      </ul>
     </nav>
   </header>
   <main>
-    <div data-view="entry-form">
+    <div data-view="entry-form" id="formView" class="view">
       <form class="container" id="entry-form">
         <div class="row">
           <div class="column-full">
             <h2>New Entry</h2>
           </div>
           <div class="column-full column-half">
-            <input type="image" id="image" src="images/placeholder-image-square.jpg" alt="Entry Image">
+            <input type="image" class="image" id="image" src="images/placeholder-image-square.jpg" alt="Entry Image">
           </div>
           <div class="column-full column-half">
             <label for="image-url">Image URL</label>
@@ -59,11 +67,14 @@
           </div>
           <div class="column-full">
             <div class="button-container">
-              <button class="button-save">SAVE</button>
+              <button class="button-save"><i class="blue fas fa-save fa-3x"></i></button>
             </div>
           </div>
         </div>
       </form>
+    </div>
+    <div data-view="entries" id="entriesView" class="view hidden">
+      <ul class="entry-list container"></ul>
     </div>
   </main>
   <footer></footer>
