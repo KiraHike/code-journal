@@ -1,6 +1,7 @@
 /* global data */
 /* exported data */
 
+var i;
 var $dataViewEntryForm = document.querySelector('#formView');
 var $dataViewEntries = document.querySelector('#entriesView');
 
@@ -48,14 +49,43 @@ var entryObj = {
 };
 
 function clickSave(event) {
-  event.preventDefault();
-  data.nextEntryId++;
-  data.entries.unshift(entryObj);
-  $entry = renderEntry(entryObj);
-  $entryList.prepend($entry);
-  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $newEntryForm.reset();
-  changeViewEntries();
+  if ($formHead.textContent === 'New Entry') {
+    titleValue = $newEntryForm.elements.title.value;
+    notesValue = $newEntryForm.elements.notes.value;
+    imageValue = $newEntryForm.elements.url.value;
+    entryObj = {
+      url: imageValue,
+      title: titleValue,
+      notes: notesValue,
+      entryId: data.nextEntryId
+    };
+    event.preventDefault();
+    data.nextEntryId++;
+    data.entries.unshift(entryObj);
+    $entry = renderEntry(entryObj);
+    $entryList.prepend($entry);
+    $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $newEntryForm.reset();
+    changeViewEntries();
+  } else {
+    event.preventDefault();
+    entryObj = data.editing;
+    titleValue = $newEntryForm.elements.title.value;
+    notesValue = $newEntryForm.elements.notes.value;
+    imageValue = $newEntryForm.elements.url.value;
+    entryObj = {
+      url: imageValue,
+      title: titleValue,
+      notes: notesValue,
+      entryId: data.editing.entryId
+    };
+    $entry = renderEntry(entryObj);
+    closestElement.replaceWith($entry);
+    $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $newEntryForm.reset();
+    $formHead.textContent = 'New Entry';
+    changeViewEntries();
+  }
 }
 
 $newEntryForm.addEventListener('submit', clickSave);
@@ -93,8 +123,6 @@ function renderEntry(object) {
 
   return $liRow;
 }
-
-var i;
 
 function contentLoaded(event) {
   for (i = 0; i < data.entries.length; i++) {
