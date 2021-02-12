@@ -38,17 +38,17 @@ function changeViewForm() {
   $dataViewEntryForm.className = 'view';
 }
 
-var titleValue = $newEntryForm.elements.title.value;
-var notesValue = $newEntryForm.elements.notes.value;
-var imageValue = $newEntryForm.elements.url.value;
-var entryObj = {
-  url: imageValue,
-  title: titleValue,
-  notes: notesValue,
-  entryId: data.nextEntryId
-};
-
 function clickSave(event) {
+  event.preventDefault();
+  var titleValue = $newEntryForm.elements.title.value;
+  var notesValue = $newEntryForm.elements.notes.value;
+  var imageValue = $newEntryForm.elements.url.value;
+  var entryObj = {
+    url: imageValue,
+    title: titleValue,
+    notes: notesValue,
+    entryId: data.nextEntryId
+  };
   if ($formHead.textContent === 'New Entry') {
     titleValue = $newEntryForm.elements.title.value;
     notesValue = $newEntryForm.elements.notes.value;
@@ -59,7 +59,6 @@ function clickSave(event) {
       notes: notesValue,
       entryId: data.nextEntryId
     };
-    event.preventDefault();
     data.nextEntryId++;
     data.entries.unshift(entryObj);
     $entry = renderEntry(entryObj);
@@ -68,7 +67,6 @@ function clickSave(event) {
     $newEntryForm.reset();
     changeViewEntries();
   } else {
-    event.preventDefault();
     entryObj = data.editing;
     titleValue = $newEntryForm.elements.title.value;
     notesValue = $newEntryForm.elements.notes.value;
