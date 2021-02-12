@@ -79,6 +79,7 @@ function clickSave(event) {
       notes: notesValue,
       entryId: data.editing.entryId
     };
+    data.entries[dataEntriesIndex] = entryObj;
     $entry = renderEntry(entryObj);
     closestElement.replaceWith($entry);
     $image.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -158,6 +159,7 @@ var closestElement;
 var dataEntryIDValue;
 
 var $formHead = document.querySelector('h2');
+var dataEntriesIndex;
 
 function editEntry(event) {
   if (event.target.matches('i')) {
@@ -165,6 +167,7 @@ function editEntry(event) {
     dataEntryIDValue = Number(closestElement.getAttribute('data-entry-id'));
     for (i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === dataEntryIDValue) {
+        dataEntriesIndex = i;
         data.editing = data.entries[i];
       }
     }
