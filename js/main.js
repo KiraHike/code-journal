@@ -182,3 +182,19 @@ function editEntry(event) {
     addImage();
   }
 }
+
+var $modal = document.querySelector('.modal');
+var $buttonYes = document.querySelector('.button-yes');
+var $buttonNo = document.querySelector('.button-no');
+
+function clickYes(event) {
+  $modal.className = 'modal view hidden';
+}
+
+$buttonYes.addEventListener('click', clickYes);
+
+function clickNo(event) {
+  $modal.className = 'modal view hidden';
+}
+
+$buttonNo.addEventListener('click', clickNo);
