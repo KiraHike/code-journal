@@ -1,7 +1,6 @@
 /* global data */
 /* exported data */
 
-var i;
 var $dataViewEntryForm = document.querySelector('#formView');
 var $dataViewEntries = document.querySelector('#entriesView');
 
@@ -124,7 +123,7 @@ function renderEntry(object) {
 }
 
 function contentLoaded(event) {
-  for (i = 0; i < data.entries.length; i++) {
+  for (var i = 0; i < data.entries.length; i++) {
     $entry = renderEntry(data.entries[i]);
     $entryList.append($entry);
   }
@@ -139,7 +138,7 @@ function changeViewNav(event) {
   if (event.target.matches('.nav-link')) {
     var dataViewValue = event.target.getAttribute('data-view');
     data.view = dataViewValue;
-    for (i = 0; i < $viewList.length; i++) {
+    for (var i = 0; i < $viewList.length; i++) {
       if ($viewList[i].getAttribute('data-view') === dataViewValue) {
         $viewList[i].className = 'view';
       } else {
@@ -163,7 +162,7 @@ function editEntry(event) {
   if (event.target.matches('i')) {
     closestElement = event.target.closest('li');
     dataEntryIDValue = Number(closestElement.getAttribute('data-entry-id'));
-    for (i = 0; i < data.entries.length; i++) {
+    for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === dataEntryIDValue) {
         dataEntriesIndex = i;
         data.editing = data.entries[i];
