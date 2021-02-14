@@ -161,6 +161,9 @@ var $formHead = document.querySelector('h2');
 var dataEntriesIndex;
 var $buttonContainer = document.querySelector('.button-container');
 var $deleteButton = document.querySelector('.button-delete');
+var $modal = document.querySelector('.modal');
+var $buttonYes = document.querySelector('.button-yes');
+var $buttonNo = document.querySelector('.button-no');
 
 function editEntry(event) {
   if (event.target.matches('i')) {
@@ -183,18 +186,30 @@ function editEntry(event) {
   }
 }
 
-var $modal = document.querySelector('.modal');
-var $buttonYes = document.querySelector('.button-yes');
-var $buttonNo = document.querySelector('.button-no');
+$deleteButton.addEventListener('click', function (event) {
+  $modal.className = 'modal view';
+});
 
-function clickYes(event) {
+$buttonYes.addEventListener('click', function (event) {
+  var entryObjDel = data.editing;
+  dataEntryIDValue = data.editing.entryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === dataEntryIDValue) {
+      dataEntriesIndex = i;
+    }
+  }
+  data.entries.splice(dataEntriesIndex, 1);
+  $entry = renderEntry(entryObjDel);
+  $entry.remove();
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $newEntryForm.reset();
+  $formHead.textContent = 'New Entry';
+  $buttonContainer.className = 'button-container right';
+  $deleteButton.className = 'button-delete view hidden';
   $modal.className = 'modal view hidden';
-}
+  changeViewEntries();
+});
 
-$buttonYes.addEventListener('click', clickYes);
-
-function clickNo(event) {
+$buttonNo.addEventListener('click', function (event) {
   $modal.className = 'modal view hidden';
-}
-
-$buttonNo.addEventListener('click', clickNo);
+});

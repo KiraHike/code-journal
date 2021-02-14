@@ -67,8 +67,8 @@
           </div>
           <div class="column-full">
             <div class="button-container right">
-              <button class="button-delete view hidden"><i class="blue fas fa-trash fa-3x"></i></button>
-              <button class="button-save"><i class="blue fas fa-save fa-3x"></i></button>
+              <button type="button" class="button-delete view hidden">DELETE</button>
+              <button type="submit" id="submit" class="button-save">SAVE</button>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
     <div data-view="entries" id="entriesView" class="view hidden">
       <ul class="entry-list container"></ul>
     </div>
-    <div class="modal view">
+    <div class="modal view hidden">
       <div class="modal-container">
         <div class="modal-box">
           <h4 class="column-full">Delete entry?</h4>
