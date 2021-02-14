@@ -63,12 +63,6 @@ textarea {
   border: none;
 }
 
-button {
-  background-color: white;
-  cursor: pointer;
-  border: none;
-}
-
 ul {
   list-style: none;
 }
@@ -105,13 +99,21 @@ h4 {
   margin: 0 0 1.5rem 0;
 }
 
+button {
+  cursor: pointer;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+button:active {
+  transform: translateY(0.25rem);
+}
+
 .button-yes,
 .button-save {
   background-color: #123754;
   border: none;
   color: white;
-  padding: 1rem;
-  font-weight: 700;
 }
 
 .button-no,
@@ -119,10 +121,4 @@ h4 {
   background-color: white;
   border: 1px solid #123754;
   color: #123754;
-  padding: 1rem;
-  font-weight: 700;
-}
-
-button:active {
-  transform: translateY(0.25rem);
 }
