@@ -116,6 +116,11 @@ button:active {
   color: white;
 }
 
+.button-save,
+.button-delete {
+  width: 6rem;
+}
+
 .button-no,
 .button-delete {
   background-color: white;
