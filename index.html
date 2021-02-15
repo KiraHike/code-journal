@@ -66,8 +66,9 @@
             id="entry-notes"></textarea>
           </div>
           <div class="column-full">
-            <div class="button-container">
-              <button class="button-save"><i class="blue fas fa-save fa-3x"></i></button>
+            <div class="button-container right">
+              <button type="button" class="button-delete view hidden">DELETE</button>
+              <button type="submit" id="submit" class="button-save">SAVE</button>
             </div>
           </div>
         </div>
@@ -75,6 +76,15 @@
     </div>
     <div data-view="entries" id="entriesView" class="view hidden">
       <ul class="entry-list container"></ul>
+    </div>
+    <div class="modal view hidden">
+      <div class="modal-container">
+        <div class="modal-box">
+          <h4 class="column-full">Delete entry?</h4>
+          <button class="button-yes">YES</button>
+          <button class="button-no">NO</button>
+        </div>
+      </div>
     </div>
   </main>
   <footer></footer>

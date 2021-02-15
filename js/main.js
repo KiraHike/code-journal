@@ -82,6 +82,8 @@ function clickSave(event) {
     $image.setAttribute('src', 'images/placeholder-image-square.jpg');
     $newEntryForm.reset();
     $formHead.textContent = 'New Entry';
+    $buttonContainer.className = 'button-container right';
+    $deleteButton.className = 'button-delete view hidden';
     changeViewEntries();
   }
 }
@@ -157,6 +159,11 @@ var dataEntryIDValue;
 
 var $formHead = document.querySelector('h2');
 var dataEntriesIndex;
+var $buttonContainer = document.querySelector('.button-container');
+var $deleteButton = document.querySelector('.button-delete');
+var $modal = document.querySelector('.modal');
+var $buttonYes = document.querySelector('.button-yes');
+var $buttonNo = document.querySelector('.button-no');
 
 function editEntry(event) {
   if (event.target.matches('i')) {
@@ -173,6 +180,39 @@ function editEntry(event) {
     $newEntryForm.elements.notes.value = data.editing.notes;
     $newEntryForm.elements.url.value = data.editing.url;
     $formHead.textContent = 'Edit Entry';
+    $buttonContainer.className = 'button-container space';
+    $deleteButton.className = 'button-delete view';
     addImage();
   }
 }
+
+$deleteButton.addEventListener('click', function (event) {
+  $modal.className = 'modal view';
+});
+
+$buttonYes.addEventListener('click', function (event) {
+  dataEntryIDValue = data.editing.entryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === dataEntryIDValue) {
+      dataEntriesIndex = i;
+    }
+  }
+  data.entries.splice(dataEntriesIndex, 1);
+  var $children = $entryList.childNodes;
+  for (i = 0; i < $children.length; i++) {
+    if (Number($children[i].getAttribute('data-entry-id')) === dataEntryIDValue) {
+      $children[i].remove();
+    }
+  }
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $newEntryForm.reset();
+  $formHead.textContent = 'New Entry';
+  $buttonContainer.className = 'button-container right';
+  $deleteButton.className = 'button-delete view hidden';
+  $modal.className = 'modal view hidden';
+  changeViewEntries();
+});
+
+$buttonNo.addEventListener('click', function (event) {
+  $modal.className = 'modal view hidden';
+});
