@@ -191,7 +191,6 @@ $deleteButton.addEventListener('click', function (event) {
 });
 
 $buttonYes.addEventListener('click', function (event) {
-  var entryObjDel = data.editing;
   dataEntryIDValue = data.editing.entryId;
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryId === dataEntryIDValue) {
@@ -199,8 +198,12 @@ $buttonYes.addEventListener('click', function (event) {
     }
   }
   data.entries.splice(dataEntriesIndex, 1);
-  $entry = renderEntry(entryObjDel);
-  $entry.remove();
+  var $children = $entryList.childNodes;
+  for (i = 0; i < $children.length; i++) {
+    if (Number($children[i].getAttribute('data-entry-id')) === dataEntryIDValue) {
+      $children[i].remove();
+    }
+  }
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntryForm.reset();
   $formHead.textContent = 'New Entry';
